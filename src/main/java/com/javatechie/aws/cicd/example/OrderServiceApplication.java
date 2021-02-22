@@ -19,10 +19,15 @@ public class OrderServiceApplication {
     @Autowired
     private OrderDao orderDao;
     
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String home(){
-        return  "Welcome to Automated Leave Approval Application";
+        return  "Welcome to Home";
     }
+    
+    @RequestMapping("/")
+    public String helloword(){
+        return  "Hello World! ";
+    }    
     
     @GetMapping("orders")
     public List<Order> fetchOrders() {
