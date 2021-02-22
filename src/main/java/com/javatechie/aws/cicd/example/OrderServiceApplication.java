@@ -13,13 +13,18 @@ import java.util.stream.Collectors;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/")
 public class OrderServiceApplication {
 
     @Autowired
     private OrderDao orderDao;
-
-    @GetMapping
+    
+    @RequestMapping("/")
+    public String home(){
+        return  "Welcome to Automated Leave Approval Application";
+    }
+    
+    @GetMapping("orders")
     public List<Order> fetchOrders() {
         return orderDao.getOrders().stream().
                 sorted(Comparator.comparing(Order::getPrice)).collect(Collectors.toList());
